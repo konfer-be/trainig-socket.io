@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr" >
+
+<head>
+    <meta charset="UTF-8">
+    <title>Instant messaging with socket.IO</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="./../assets/css/style.css">
+    <link rel="stylesheet" href="./../assets/css/loader.css">
+</head>
+
+<body class="modal-active">
+
+<div id="modal-container">
+    <div class="modal-background">
+        <div class="modal">
+            <h2>Define a username</h2>
+            <form id="form-username" action="">
+                <input type="text" name="username">
+            </form>
+            <div id="loader-username" class="lds-ripple hidden"><div></div><div></div></div>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div class="container">
+        <div class="left">
+            <div class="top">
+                <input type="text" placeholder="Rechercher" />
+                <a href="javascript:;" class="search"></a>
+            </div>
+            <div class="middle">
+                <h2>Channels</h2>
+                <div class="rooms">
+                    <div id="room-1" class="room--container active">
+                        <div class="room--title">General (<span id="room--count"></span>)</div>
+                        <div class="room--description">To talk about all and nothing.</div>
+                    </div>
+                </div>
+                <h2>Conversations</h2>
+                <div class="conversations">
+                    <ul id="people--container" class="people">
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="top">
+                <span>Vers: <span id="users-dropdown-trigger" class="name"></span></span>
+            </div>
+            <div class="users--container hidden">
+                <ul id="users-dropdown" class="users--list"></ul>
+            </div>
+            <div id="chat--container">
+                
+            </div>
+            <div class="write">
+                <form id="form-message">
+                    <input type="text" name="send-message" />
+                    <a href="javascript:;" class="write-link send"></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script  src="./../assets/js/index.js"></script>
+<script  src="./../assets/js/chat.js"></script>
+
+<script>
+    Chat.init( io() );
+</script>
+
+</body>
+
+</html>
